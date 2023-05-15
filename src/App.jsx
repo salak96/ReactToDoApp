@@ -3,9 +3,15 @@ import React, { useState } from 'react';
 import Todos from './components/Todos';
 function App() {
     const [namaTask, setNamaTask] = useState('');
-    const toggleCompleted = (id) => {
-        console.log(id);
-    };
+    const toggleCompleted = (todoId) => {
+        const updatedTodos = todos.map((todo) => {
+          if (todo.id === todoId) {
+            todo.completed = !todo.completed
+          }
+          return todo
+        })
+        setTodos(updatedTodos)
+      }
     const [todos, setTodos] = useState([
         {
             id: 1,
@@ -41,7 +47,6 @@ function App() {
             <h1 className={'flex text-xl m-2 text-white justify-items-start md:justify-items-center'}>My Todo List</h1>
             <div className={'flex justify-center m-5'}>
                 <input
-                    
                     value={namaTask}
                     onChange={(e) => setNamaTask(e.target.value)}
                     className={

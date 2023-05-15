@@ -3,9 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-
-const TodoItem = ({ todo, toggleCompleted }) => {
-    // Definisikan function getTodoTitleStyle di sini
+const TodoItem = ({ todo, toggleCompleted,deleteTask }) => {
     const getTodoTitleStyle = () => {
         if (todo.completed === true) {
             return { textDecoration: 'line-through' };
@@ -13,17 +11,14 @@ const TodoItem = ({ todo, toggleCompleted }) => {
             return { textDecoration: 'none' };
         }
     };
-    function hapus({todos}){
-        // const hapus = todos.filter((todo) => todo.id !== todo.id);
-        // setTodos(hapus);
-        // console.log(`Todo dengan id ${todo.id} telah dihapus`);
-    }
 
     return (
-        <div style={styles.todoItem}>
+        <div style={styles.todoItem} >
             <input type='checkbox' style={styles.checkbox} onChange={() => toggleCompleted(todo.id)} />
-            <p style={getTodoTitleStyle()}>{todo.title}</p>
-            <button onClick={hapus} style={styles.button}>x</button>
+            <p style={getTodoTitleStyle()}>
+                {todo.title}
+            </p>
+            <button onClick={() => deleteTask (todo.id)} style={styles.button} >X</button>
         </div>
     );
 };
@@ -58,7 +53,7 @@ const styles = {
         fontWeight: 'bold',
         marginLeft: 'auto',
 
-      },
+    },
 };
 
 export default TodoItem;

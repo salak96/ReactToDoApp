@@ -32,7 +32,7 @@ function App() {
     ]);
     function AddTodo() {
         const newTodo = {
-            id: todos.length + 1,
+            id: todos[todos.length - 1].id + 1,
             title: namaTask,
             completed: false,
         };
